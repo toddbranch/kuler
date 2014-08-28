@@ -20,7 +20,7 @@
   </div>
 	<div>
 	<% @palette.colors.each do |color| %>
-		<input type="color" name="palette[colors][]" value="<%= color.hex_value %>">
+		<input class="color" type="color" name="palette[colors][]" value="<%= color.hex_value %>">
 	<% end %>
 	</div>
 <% end %>
