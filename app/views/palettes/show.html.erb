@@ -6,8 +6,9 @@
 </p>
 
 <p>
-  <strong>Slug:</strong>
-  <%= @palette.slug %>
+<% @palette.colors.each do |color| %>
+	<input type="color" name="palette[colors][]" value="<%= color.hex_value %>">
+<% end %>
 </p>
 
 <%= link_to 'Edit', edit_palette_path(@palette) %> |

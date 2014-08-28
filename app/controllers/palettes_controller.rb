@@ -32,6 +32,10 @@ class PalettesController < ApplicationController
 
     respond_to do |format|
       if @palette.save
+				params[:palette][:colors].each do |value|
+					@palette.colors.create(hex_value: value)
+				end
+
         format.html { redirect_to @palette, notice: 'Palette was successfully created.' }
         format.json { render :show, status: :created, location: @palette }
       else
