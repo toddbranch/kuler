@@ -15,6 +15,10 @@ class PalettesController < ApplicationController
   # GET /palettes/new
   def new
     @palette = Palette.new
+		initial_colors = ['2','6','A','D','F']
+		initial_colors.each do |color|
+			@palette.colors.new(hex_value: "##{color * 6}")
+		end
   end
 
   # GET /palettes/1/edit
