@@ -89,9 +89,14 @@ class PalettesController < ApplicationController
     end
 
 		def default_palette_colors
-			initial_colors = ['2','6','A','D','F']
-			initial_colors.each do |color|
-				@palette.colors.new(hex_value: "##{color * 6}")
+			default_colors =	[	"22ff00",
+													"f66868",
+													"6c6ac6",
+													"6cf934",
+													"f9c934"
+												]
+			default_colors.each do |color|
+				@palette.colors.new(hex_value: "##{color}")
 			end
 		end
 end
