@@ -1,5 +1,5 @@
 class PalettesController < ApplicationController
-  before_action :set_palette, only: [:show, :edit, :update, :destroy]
+  before_action :set_palette, only: [:show, :edit, :update, :destroy, :share]
 
   # GET /palettes
   # GET /palettes.json
@@ -76,6 +76,15 @@ class PalettesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /palettes/1/share
+	def share
+		email = params[:share][:email]
+		ShareMailer.share_email(@palette, email, request.host_with_port).deliver
+    respond_to do |format|
+			format.html { redirect_to @palette, notice: 'Palette shared!' }
+		end
+	end
 
   private
     # Use callbacks to share common setup or constraints between actions.

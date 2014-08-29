@@ -3,4 +3,10 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @palette %> |
-<%= link_to 'Back', palettes_path %>
+<%= link_to 'All', palettes_path %> |
+<%= form_tag(share_palette_path, method: "post") do %>
+  <%= label_tag(:share, "Share with:") %>
+	<%= email_field(:share, :email) %>
+	<%= hidden_field :palette, :id, :value => @palette.id %>
+  <%= submit_tag("Share!") %>
+<% end %>

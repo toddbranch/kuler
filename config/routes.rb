@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+	post '/palettes/:id/share', to: 'palettes#share', as: 'share_palette'
+
   resources :palettes
 
 	root to: 'palettes#new'
