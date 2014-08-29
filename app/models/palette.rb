@@ -3,11 +3,8 @@ class Palette < ActiveRecord::Base
 
 	validates		:name, presence: true, uniqueness: true
 
-	after_save	:generate_slug
+	def slug
+		return "#{self.id} #{self.name}".parameterize
+	end
 
-	private
-
-		def generate_slug
-			self.slug = "#{self.id} #{self.name}".parameterize
-		end
 end
