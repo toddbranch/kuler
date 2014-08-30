@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	resources :palettes do
-		post 'share', on: :member
+		get 'share', on: :member
 	end
 
 	root to: 'palettes#new'
