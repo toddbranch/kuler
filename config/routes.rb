@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :palettes do
+	resources :palettes do
 		post 'share', on: :member
 	end
 
