@@ -1,0 +1,6 @@
+<%= form_tag(share_palette_path, method: "get") do %>
+  <%= label_tag(:share, "Share with:") %>
+	<%= email_field(:share, :email) %>
+	<%= hidden_field :palette, :id, :value => @palette.id %>
+  <%= submit_tag("Share!") %>
+<% end %>

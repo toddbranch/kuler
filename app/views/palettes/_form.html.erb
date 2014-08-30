@@ -20,6 +20,7 @@
   </div>
 	<div>
 	<% @palette.colors.each do |color| %>
+		<%= color_field :palette[:colors][], value: color.hex_value, class: "color" %>
 		<input class="color" type="color" name="palette[colors][]" value="<%= color.hex_value %>">
 	<% end %>
 	</div>
