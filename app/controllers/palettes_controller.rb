@@ -50,9 +50,7 @@ class PalettesController < ApplicationController
     respond_to do |format|
       if @palette.update(palette_params)
 
-				@palette.colors.each do |color|
-					color.destroy
-				end
+				@palette.colors.destroy_all
 
 				params[:palette][:colors].each do |value|
 					@palette.colors.create(hex_value: value)
