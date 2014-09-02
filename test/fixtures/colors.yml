@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  hex_value: MyString
-  palette_id: 1
-
-two:
-  hex_value: MyString
+duplicate_color:
+  hex_value: ABCDEF
   palette_id: 1
