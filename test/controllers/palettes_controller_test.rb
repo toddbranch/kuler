@@ -3,6 +3,7 @@ require 'test_helper'
 class PalettesControllerTest < ActionController::TestCase
   setup do
     @palette = palettes(:one)
+		@test_colors = [ "AAAAAA", "AAAAAA", "AAAAAA", "AAAAAA", "AAAAAA", "AAAAAA"]
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class PalettesControllerTest < ActionController::TestCase
 
   test "should create palette" do
     assert_difference('Palette.count') do
-      post :create, palette: { name: @palette.name, slug: @palette.slug }
+      post :create, palette: { name: "New Name", colors: @test_colors }
     end
 
     assert_redirected_to palette_path(assigns(:palette))
@@ -35,7 +36,7 @@ class PalettesControllerTest < ActionController::TestCase
   end
 
   test "should update palette" do
-    patch :update, id: @palette, palette: { name: @palette.name, slug: @palette.slug }
+    patch :update, id: @palette, palette: { name: @palette.name, colors: @test_colors }
     assert_redirected_to palette_path(assigns(:palette))
   end
 
