@@ -75,7 +75,7 @@ class PalettesController < ApplicationController
     end
   end
 
-  # POST /palettes/1/share
+  # GET /palettes/1/share
 	def share
 		email = params[:share][:email]
 		ShareMailer.share_email(@palette, email, request.host_with_port).deliver
