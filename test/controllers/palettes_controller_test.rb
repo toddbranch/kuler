@@ -12,6 +12,12 @@ class PalettesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:palettes), "GET palettes not assigned palettes variable"
   end
 
+  test "should get json index" do
+    get :index, format: :json
+    assert_response :success, "GET palettes json route broken"
+    assert_not_nil assigns(:palettes), "GET palettes json not assigned palettes variable"
+  end
+
   test "should get new" do
     get :new
     assert_response :success, "GET new palette route broken"
@@ -35,6 +41,12 @@ class PalettesControllerTest < ActionController::TestCase
     get :show, id: @palette
     assert_not_nil assigns(:palette), "GET palette not assigning palette variable"
     assert_response :success, "GET palette route broken"
+  end
+
+  test "should show palette json" do
+    get :show, id: @palette, format: :json
+    assert_not_nil assigns(:palette), "GET palette JSON not assigning palette variable"
+    assert_response :success, "GET palette JSON route broken"
   end
 
   test "should get edit" do

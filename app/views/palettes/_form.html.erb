@@ -18,7 +18,7 @@
   <div class="actions">
     <%= f.submit class: "button" %>
   </div>
-  <div>
+  <div class="field">
   <% @palette.colors.each do |color| %>
     <input class="color" type="color" name="palette[colors][]" value="<%= color.hex_value %>">
   <% end %>
