@@ -19,4 +19,13 @@ class SharePaletteTest < ActionDispatch::IntegrationTest
 		assert_equal 'Palette was successfully destroyed.', flash[:notice]
 
 	end
+
+	test "create palette through site" do
+		get "palettes/new"
+		assert_response :success
+
+		post_via_redirect "palettes", palette: {name: "my created palette", colors: ['AAAAAA']}
+		assert_response :success
+		assert_equal 'Palette was successfully created.', flash[:notice]
+	end
 end
