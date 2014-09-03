@@ -87,7 +87,14 @@ class PalettesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_palette
-      @palette = Palette.find(params[:id])
+      @palette = Palette.find_by_id(params[:id])
+
+      if !@palette
+        respond_to do |format|
+          format.html { redirect_to palettes_url, notice: 'Palette could not be found.' }
+          format.json { head :no_content }
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
