@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SharePaletteTest < ActionDispatch::IntegrationTest
+class PaletteIntegrationTests < ActionDispatch::IntegrationTest
   test "share palette through site" do
     palette = Palette.first
     get "palettes/#{palette.id}"
