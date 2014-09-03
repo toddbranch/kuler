@@ -14,8 +14,8 @@ class PalettesController < ApplicationController
 
   # GET /palettes/new
   def new
-		@palette = Palette.new
-		default_palette_colors
+    @palette = Palette.new
+    default_palette_colors
   end
 
   # GET /palettes/1/edit
@@ -29,14 +29,14 @@ class PalettesController < ApplicationController
 
     respond_to do |format|
       if @palette.save
-				params[:palette][:colors].each do |value|
-					@palette.colors.create(hex_value: value)
-				end
+        params[:palette][:colors].each do |value|
+          @palette.colors.create(hex_value: value)
+        end
 
         format.html { redirect_to @palette, notice: 'Palette was successfully created.' }
         format.json { render :show, status: :created, location: @palette }
       else
-				default_palette_colors
+        default_palette_colors
 
         format.html { render :new }
         format.json { render json: @palette.errors, status: :unprocessable_entity }
@@ -50,11 +50,11 @@ class PalettesController < ApplicationController
     respond_to do |format|
       if @palette.update(palette_params)
 
-				@palette.colors.destroy_all
+        @palette.colors.destroy_all
 
-				params[:palette][:colors].each do |value|
-					@palette.colors.create(hex_value: value)
-				end
+        params[:palette][:colors].each do |value|
+          @palette.colors.create(hex_value: value)
+        end
 
         format.html { redirect_to @palette, notice: 'Palette was successfully updated.' }
         format.json { render :show, status: :ok, location: @palette }
@@ -76,13 +76,13 @@ class PalettesController < ApplicationController
   end
 
   # GET /palettes/1/share
-	def share
-		email = params[:share][:email]
-		ShareMailer.share_email(@palette, email, request.host_with_port).deliver
+  def share
+    email = params[:share][:email]
+    ShareMailer.share_email(@palette, email, request.host_with_port).deliver
     respond_to do |format|
-			format.html { redirect_to @palette, notice: 'Palette shared!' }
-		end
-	end
+      format.html { redirect_to @palette, notice: 'Palette shared!' }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -95,15 +95,15 @@ class PalettesController < ApplicationController
       params.require(:palette).permit(:name, :slug)
     end
 
-		def default_palette_colors
-			default_colors =	[	"22ff00",
-													"f66868",
-													"6c6ac6",
-													"6cf934",
-													"f9c934"
-												]
-			default_colors.each do |color|
-				@palette.colors.new(hex_value: "##{color}")
-			end
-		end
+    def default_palette_colors
+      default_colors =  [ "22ff00",
+                          "f66868",
+                          "6c6ac6",
+                          "6cf934",
+                          "f9c934"
+                        ]
+      default_colors.each do |color|
+        @palette.colors.new(hex_value: "##{color}")
+      end
+    end
 end
