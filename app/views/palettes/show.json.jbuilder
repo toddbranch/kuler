@@ -1,1 +1,1 @@
-json.extract! @palette, :id, :name, :slug, :created_at, :updated_at
+json.extract! @palette, :id, :name, :created_at, :updated_at
