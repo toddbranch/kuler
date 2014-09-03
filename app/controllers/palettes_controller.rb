@@ -99,7 +99,7 @@ class PalettesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def palette_params
-      params.require(:palette).permit(:name, :slug)
+      params.require(:palette).permit(:name)
     end
 
     def default_palette_colors
