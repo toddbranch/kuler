@@ -1,7 +1,5 @@
 # kuler
 
-by Todd Branchflower
-
 Simple color palette creation and sharing app, written in Rails for All4Staff.
 
 - emails are delivered to a local file (`tmp/mails`) for testing
